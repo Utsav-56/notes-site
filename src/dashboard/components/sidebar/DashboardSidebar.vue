@@ -1,14 +1,10 @@
 <script setup>
 import { onMounted, ref, useTemplateRef } from "vue";
 import CloseBtn from "@/icons/close-btn.vue";
-import SemesterLists from "@/components/sidebar/semesterLists.vue";
+
 import HamburgerIcon from "@/icons/Hamburger-Icon.vue";
 import { onClickOutside } from "@vueuse/core";
-import HomeIcon from "@/icons/Home-icon.vue";
-import NewsIcon from "@/icons/News-icon.vue";
-import LoginIcon from "@/icons/Login-icon.vue";
-import SignupIcon from "@/icons/Signup-icon.vue";
-import NavLinks from "@/components/sidebar/NavLinks.vue";
+import DashboardLinks from "@/dashboard/components/sidebar/DashboardLinks.vue";
 
 defineProps({
     heading: {
@@ -115,7 +111,7 @@ onMounted(() => {
                     Topper Notes
                 </span>
             </RouterLink>
-            <NavLinks />
+            <DashboardLinks />
         </div>
     </aside>
 </template>

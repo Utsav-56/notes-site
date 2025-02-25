@@ -7,13 +7,13 @@
     >
         <path
             fill="#c2c2c2"
-            d="M4 7v12h15v2H4c-2 0-2-2-2-2V7zm17.3-4H7.7C6.76 3 6 3.7 6 4.55v10.9c0 .86.76 1.55 1.7 1.55h13.6c.94 0 1.7-.69 1.7-1.55V4.55C23 3.7 22.24 3 21.3 3M8 5h5v6H8zm13 10H8v-2h13zm0-4h-6V9h6zm0-4h-6V5h6z"
+            d="M12 21v-2h7V5h-7V3h9v18zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5z"
         ></path>
     </svg>
 </template>
 
 <script>
 export default {
-    name: "News-icon",
+    name: "Login-icon",
 };
 </script>

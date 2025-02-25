@@ -1,24 +1,19 @@
 <template>
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
+        width="1em"
+        height="1em"
         viewBox="0 0 24 24"
     >
-        <path fill="currentColor" d="M4 21V9l8-6l8 6v12h-6v-7h-4v7z" />
+        <path
+            fill="#c2c2c2"
+            d="M5 20V9.5l7-5.288L19 9.5V20h-5.192v-6.384h-3.616V20z"
+        ></path>
     </svg>
 </template>
+
 <script>
 export default {
     name: "Home-icon",
 };
 </script>
-<style scoped>
-aside {
-    @apply border-2 border-gray-200  rounded-lg dark:border-gray-700;
-}
-
-button {
-    user-select: none;
-}
-</style>

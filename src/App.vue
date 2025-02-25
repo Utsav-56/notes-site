@@ -1,13 +1,9 @@
 <script setup>
-import SemesterSubjectCard from "@/components/subjectCards/SemesterSubjectCard.vue";
 import NavSidebar from "@/components/sidebar/Nav-Sidebar.vue";
 </script>
 
 <template>
-    <nav-sidebar
-        @side-bar-closed="handleSidebarClose"
-        @sideBarOpend="handleSidebarOpen"
-    ></nav-sidebar>
+    <nav-sidebar></nav-sidebar>
 
     <main ref="mainBody" class="">
         <RouterView></RouterView>

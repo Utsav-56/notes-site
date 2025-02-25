@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
+import { useRouteStore } from "@/stores/routeStore.js";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,7 +42,23 @@ const router = createRouter({
             name: "news",
             component: () => import("@/pages/NewsPage.vue"),
         },
+        {
+            path: "/dashboard",
+            name: "dashboard",
+            component: () => import("@/dashboard/Dashboard.vue"),
+        },
     ],
 });
+
+//
+// router.beforeEach((to, from, next) => {
+//     const routeStore = useRouteStore();
+//     if (to.name === "dashboard") {
+//         routeStore.setInDashboard(true);
+//     } else {
+//         routeStore.setInDashboard(false);
+//     }
+//     next();
+// });
 
 export default router;

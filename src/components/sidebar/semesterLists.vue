@@ -69,14 +69,11 @@ function toggleList() {
 .nav-inner-dropdown-item {
     @apply flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700;
 }
-.router-link-exact-active{
-
+.router-link-exact-active {
     background: rgba(178, 182, 174, 0.41);
 }
 
-.router-link-active
-{
+.router-link-active {
     background: rgba(178, 182, 174, 0.41);
 }
-
 </style>

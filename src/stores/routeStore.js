@@ -2,7 +2,7 @@
 
 import { defineStore } from "pinia";
 
-export const userSelectionStore = defineStore("userSelection", {
+export const useRouteStore = defineStore("userSelection", {
     state: () => ({
         currentRoute: null,
         previousRoute: null,

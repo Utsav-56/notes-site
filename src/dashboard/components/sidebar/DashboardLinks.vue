@@ -5,12 +5,15 @@ import HomeIcon from "@/icons/Home-icon.vue";
 import LoginIcon from "@/icons/Login-icon.vue";
 import SignupIcon from "@/icons/Signup-icon.vue";
 import SemesterLists from "@/components/sidebar/semesterLists.vue";
+import TablerLayoutDashboard from "@/icons/dashboard.vue";
+import ProfileIcon from "@/icons/profile-icon.vue";
+import SettingsIcon from "@/icons/settings-icon.vue";
 
 const menuItems = [
-    { to: "/", label: "HomePage", icon: HomeIcon },
-    { to: "/news", label: "News", icon: NewsIcon, badge: 3 },
-    { to: "/login", label: "Sign In", icon: LoginIcon },
-    { to: "/signup", label: "Sign Up", icon: SignupIcon },
+    { to: "/dashboard", label: "Dashboard", icon: TablerLayoutDashboard },
+    { to: "/profile", label: "Profile", icon: ProfileIcon, badge: 3 },
+    { to: "/myNotes", label: "My notes", icon: SignupIcon },
+    { to: "/settings", label: "Settings", icon: SettingsIcon },
 ];
 </script>
 
@@ -34,11 +37,6 @@ const menuItems = [
 </template>
 
 <style scoped>
-svg {
-    width: 28px;
-    height: 28px;
-}
-
 .sidebar-item {
     @apply flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700;
 
