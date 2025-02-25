@@ -1,0 +1,23 @@
+<script setup>
+import SemesterSubjectCard from "@/components/subjectCards/SemesterSubjectCard.vue";
+import NavSidebar from "@/components/sidebar/Nav-Sidebar.vue";
+</script>
+
+<template>
+  <nav-sidebar @side-bar-closed="handleSidebarClose" @sideBarOpend="handleSidebarOpen"></nav-sidebar>
+
+  <main ref="mainBody" class="">
+    <RouterView></RouterView>
+  </main>
+</template>
+<style scoped>
+
+main {
+  @apply px-4 sm:ml-64 pt-14 sm:pt-4 pb-2;
+
+  #main-container {
+    @apply p-4 border-2 border-gray-200 rounded-lg dark:border-gray-700;
+  }
+}
+
+</style>
