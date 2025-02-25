@@ -9,7 +9,7 @@ import SemesterLists from "@/components/sidebar/semesterLists.vue";
 const menuItems = [
     { to: "/", label: "HomePage", icon: HomeIcon },
     { to: "/news", label: "News", icon: NewsIcon, badge: 3 },
-    { to: "#", label: "Sign In", icon: SigninIcon },
+    { to: "/login", label: "Sign In", icon: SigninIcon },
     { to: "/signup", label: "Sign Up", icon: SignupIcon },
 ];
 </script>
@@ -40,5 +40,9 @@ const menuItems = [
     .text {
         @apply flex-1 ms-3 whitespace-nowrap;
     }
+}
+.router-link-exact-active{
+
+    background: rgba(178, 182, 174, 0.41);
 }
 </style>
