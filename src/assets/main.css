@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 @layer base {
-  select {
-    @apply bg-gray-800 text-white;
-    /* Apply bg-gray-800 and text-white globally */
-  }
+    select {
+        @apply bg-gray-800 text-white;
+        /* Apply bg-gray-800 and text-white globally */
+    }
 
-  body {
-    @apply bg-primary text-primary dark:text-dark dark:bg-dark;
+    body {
+        @apply bg-primary text-primary dark:text-dark dark:bg-dark;
 
-    scroll-behavior: smooth;
-  }
+        scroll-behavior: smooth;
+    }
 }

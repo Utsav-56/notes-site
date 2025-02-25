@@ -23,15 +23,13 @@ A sleek and modern platform dedicated to providing Tribhuvan University BCA stud
 
 ---
 
-
 ## 🎓 Semester-Wise Subjects
 
 covers subject for each semester from 1 to 8
 
-*...and more for subsequent semesters.*
+_...and more for subsequent semesters._
 
 ---
-
 
 ## 📱 Responsive Design Compatibility
 
@@ -51,21 +49,21 @@ Contributions are highly encouraged! Follow the steps below to get started:
 1. Fork the repository.
 2. Create a new feature branch:
 
-   ```bash
-   git checkout -b feature/YourFeatureName
-   ```
+    ```bash
+    git checkout -b feature/YourFeatureName
+    ```
 
 3. Commit your changes:
 
-   ```bash
-   git commit -m "Add: Your feature description"
-   ```
+    ```bash
+    git commit -m "Add: Your feature description"
+    ```
 
 4. Push to your fork:
 
-   ```bash
-   git push origin feature/YourFeatureName
-   ```
+    ```bash
+    git push origin feature/YourFeatureName
+    ```
 
 5. Open a pull request for review.
 
@@ -89,7 +87,6 @@ To add resources:
 
 ---
 
-
 ## 📬 Contact
 
 For feedback, suggestions, or queries:
@@ -101,4 +98,4 @@ For feedback, suggestions, or queries:
 
 **StudyHub** — Making learning accessible, organized, and engaging for every BCA student at Tribhuvan University.
 
-****
+---

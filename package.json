@@ -1,33 +1,33 @@
 {
-  "name": "Notes-App",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "devhost": "npx vite --host",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@radix-ui/colors": "^3.0.0",
-    "@vueuse/core": "^12.7.0",
-    "pinia": "^2.3.0",
-    "pinia-plugin-persistedstate": "^4.2.0",
-    "radix-ui": "^1.0.1",
-    "radix-vue": "^1.9.12",
-    "vite-cloudflared-tunnel": "^1.0.2",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "daisyui": "^4.12.23",
-    "postcss": "^8.4.49",
-    "prettier": "3.4.2",
-    "tailwindcss": "^3.4.17",
-    "vite": "^6.0.5",
-    "vite-plugin-vue-devtools": "^7.6.8"
-  }
-
+    "name": "Notes-App",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "devhost": "npx vite --host",
+        "build": "vite build",
+        "preview": "vite preview",
+        "fmt": "prettier --write ."
+    },
+    "dependencies": {
+        "@radix-ui/colors": "^3.0.0",
+        "@vueuse/core": "^12.7.0",
+        "pinia": "^2.3.0",
+        "pinia-plugin-persistedstate": "^4.2.0",
+        "radix-ui": "^1.0.1",
+        "radix-vue": "^1.9.12",
+        "vite-cloudflared-tunnel": "^1.0.2",
+        "vue": "^3.5.13",
+        "vue-router": "^4.5.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.1",
+        "daisyui": "^4.12.23",
+        "postcss": "^8.4.49",
+        "prettier": "3.4.2",
+        "tailwindcss": "^3.4.17",
+        "vite": "^6.0.5",
+        "vite-plugin-vue-devtools": "^7.6.8"
+    }
 }
