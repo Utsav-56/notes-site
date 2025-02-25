@@ -10,7 +10,7 @@ const menuItems = [
     { to: "/", label: "HomePage", icon: HomeIcon },
     { to: "/news", label: "News", icon: NewsIcon, badge: 3 },
     { to: "#", label: "Sign In", icon: SigninIcon },
-    { to: "#", label: "Sign Up", icon: SignupIcon },
+    { to: "/signup", label: "Sign Up", icon: SignupIcon },
 ];
 </script>
 

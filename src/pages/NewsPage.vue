@@ -5,27 +5,21 @@ import SortByOptions from "@/components/news/SortByOptions.vue";
 
 <template>
     <section id="news-page">
-
         <div class="mb-8">
-            <h1 >News </h1>
+            <h1>News</h1>
         </div>
-        <SortByOptions/>
+        <SortByOptions />
 
         <news-bar v-for=" in 90"></news-bar>
-
-
-
-
     </section>
 </template>
 
 <style scoped>
-#news-page{
+#news-page {
     @apply p-8;
 }
 
-h1{
+h1 {
     @apply text-2xl;
 }
-
 </style>
