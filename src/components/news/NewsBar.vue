@@ -4,8 +4,7 @@
     <div class="news-bar h-fit mb-4">
         <div class="news-bar__container flex gap-4">
             <div
-                class="date flex flex-col items-center text-black text-xl bg-yellow-300 p-4 h-15 w-15"
-            >
+                class="date flex flex-col items-center text-black text-xl bg-yellow-300 p-4 h-15 w-15">
                 <h1 class="day">9</h1>
                 <h4 class="month">May</h4>
             </div>

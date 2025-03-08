@@ -22,8 +22,7 @@ const devList = ref([
             <img
                 :src="dev.img"
                 :alt="`${dev.name} - ${dev.role}`"
-                class="contributor-img"
-            />
+                class="contributor-img" />
             <h3 class="name">{{ dev.name }}</h3>
             <p class="role">{{ dev.role }}</p>
             <p class="role">BCA Student</p>

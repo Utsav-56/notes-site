@@ -6,13 +6,11 @@
     </header>
 
     <div
-        class="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
-    >
+        class="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         <router-link
             v-for="semester in 8"
             :to="`/sem${semester}`"
-            class="semesteer-btns"
-        >
+            class="semesteer-btns">
             Semester {{ semester }}
         </router-link>
     </div>

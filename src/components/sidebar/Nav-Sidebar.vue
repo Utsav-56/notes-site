@@ -53,16 +53,14 @@ onMounted(() => {
 
 <template>
     <div
-        class="w-full shadow-md fixed z-[999] h-fit bg-white dark:bg-darkLight sm:hidden flex justify-center items-center"
-    >
+        class="w-full shadow-md fixed z-[999] h-fit bg-white dark:bg-darkLight sm:hidden flex justify-center items-center">
         <button
             @click="openSidebar"
             data-drawer-target="logo-sidebar"
             data-drawer-toggle="logo-sidebar"
             aria-controls="logo-sidebar"
             type="button"
-            class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        >
+            class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <span class="sr-only">Open sidebar</span>
             <HamburgerIcon />
         </button>
@@ -73,13 +71,11 @@ onMounted(() => {
 
         <div
             class="inline-flex ml-auto mr-4 tooltip tooltip-info tooltip-bottom bg"
-            data-tip="myinfo"
-        >
+            data-tip="myinfo">
             <img
                 class="h-12 rounded-full w-12 p-1 border-blue-2"
                 src="../../../assets_old/bishwash.jpg"
-                alt=""
-            />
+                alt="" />
         </div>
     </div>
 
@@ -88,30 +84,24 @@ onMounted(() => {
         ref="sideBar"
         class="fixed top-0 left-0 z-[999999] w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
-        v-once
-    >
+        v-once>
         <div
-            class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800"
-        >
+            class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <button
-                class="flex w-full mb-1 p-4 justify-end text-gray-400 sm:hidden hover:cursor-default"
-            >
+                class="flex w-full mb-1 p-4 justify-end text-gray-400 sm:hidden hover:cursor-default">
                 <close-btn
                     height="1.5rem"
                     width="1.5rem"
                     @click="closeSidebar"
-                    class="ml-auto hover:cursor-pointer"
-                ></close-btn>
+                    class="ml-auto hover:cursor-pointer"></close-btn>
             </button>
             <RouterLink to="/" class="flex items-center ps-2.5 mb-5">
                 <img
                     src="../../assets/images/utsav.jpg"
                     class="h-6 me-3 sm:h-7 rounded-xl"
-                    alt="Flowbite Logo"
-                />
+                    alt="Flowbite Logo" />
                 <span
-                    class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-                >
+                    class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                     Topper Notes
                 </span>
             </RouterLink>

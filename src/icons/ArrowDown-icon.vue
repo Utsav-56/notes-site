@@ -6,15 +6,13 @@
         fill="none"
         width="32"
         height="32"
-        viewBox="0 0 18 16"
-    >
+        viewBox="0 0 18 16">
         <path
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="m1 1 4 4 4-4"
-        />
+            d="m1 1 4 4 4-4" />
     </svg>
 </template>
 <script>

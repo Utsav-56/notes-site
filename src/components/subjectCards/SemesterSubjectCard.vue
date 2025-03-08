@@ -23,8 +23,7 @@ const props = defineProps({
         <div
             class="subject-card w-[99%] bg-base-100 shadow-md hover:shadow-2xl scale-[0.94] hover:scale-[1] transition-transform tdelay-500 duration-550 ease-in-out"
             v-for="subject in semStore.semesterData[currentSemester]"
-            :key="subject.name"
-        >
+            :key="subject.name">
             <figure></figure>
             <div class="card-body">
                 <h3 class="card-title">
@@ -35,8 +34,7 @@ const props = defineProps({
                     <button
                         class="material-btn btn btn-small hover:shadow-sm text-white"
                         v-for="materials in subject.materials"
-                        :key="subject.materials"
-                    >
+                        :key="subject.materials">
                         {{ materials }}
                     </button>
                 </div>

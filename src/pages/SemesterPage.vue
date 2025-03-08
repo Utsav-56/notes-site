@@ -11,8 +11,7 @@ const semStore = useSemStore();
     <SemesterSubjectCard
         v-for="(subjects, semesterNumber) in semStore.semesterData"
         :key="semesterNumber"
-        :currentSemester="semesterNumber"
-    />
+        :currentSemester="semesterNumber" />
 </template>
 
 <style scoped></style>

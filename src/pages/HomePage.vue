@@ -18,8 +18,7 @@ import AllSemesterMaterialsCard from "@/components/subjectCards/AllSemesterMater
         </p>
         <a
             href="#contributors"
-            class="bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-gray-100 transition"
-        >
+            class="bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-gray-100 transition">
             Meet the Contributors
         </a>
     </section>
