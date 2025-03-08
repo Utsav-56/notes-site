@@ -11,12 +11,9 @@ const password = ref("");
 const confirmPassword = ref("");
 
 const validationError = ref({
-    onName: false,
-    onEmail: false,
-    onPassword: false,
-    onConfirmPassword: false,
-
+    containsError: false,
     message: {
+        username: "",
         name: "",
         email: "",
         password: "",
@@ -26,11 +23,9 @@ const validationError = ref({
 
 function clearValidationErrors() {
     validationError.value = {
-        onName: false,
-        onEmail: false,
-        onPassword: false,
-        onConfirmPassword: false,
+        containsError: false,
         message: {
+            username: "",
             name: "",
             email: "",
             password: "",
@@ -53,59 +48,69 @@ function validateForm() {
     clearValidationErrors();
 
     if (!name.value) {
-        validationError.value.onName = true;
         validationError.value.message.name = "Name is required";
-
-        return false;
+        validationError.value.containsError = true;
     }
+
+    if (!username.value) {
+        validationError.value.message.username = "Username is required";
+        validationError.value.containsError = true;
+    }
+
+
+
     if (!email.value) {
-        validationError.value.onEmail = true;
         validationError.value.message.email = "Email is required";
-        return false;
+        validationError.value.containsError = true;
     }
     if (!validateEmail(email.value)) {
-        validationError.value.onEmail = true;
         validationError.value.message.email = "Invalid email";
-
-        return false;
+        validationError.value.containsError = true;
     }
     if (!password.value) {
-        validationError.value.onPassword = true;
         validationError.value.message.password = "Password is required";
-
-        return false;
+        validationError.value.containsError = true;
     }
     if (!validatePassword(password.value)) {
-        validationError.value.onPassword = true;
         validationError.value.message.password =
             "Password must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters";
-
-        return false;
+        validationError.value.containsError = true;
     }
     if (password.value !== confirmPassword.value) {
-        validationError.value.onConfirmPassword = true;
-        validationError.value.message.confirmPassword =
-            "Passwords do not match";
-
-        return false;
+        validationError.value.message.confirmPassword = "Passwords do not match";
+        validationError.value.containsError = true;
     }
-    clearValidationErrors();
-    return true;
+
+    return !validationError.value.containsError;
 }
 
 function handleSubmit(e) {
-    e.preventDefault();
-    if (validateForm()) {
-        alert("Form submitted");
-        router.push("/login");
+    if (!validateForm()) {
+        return false;
     }
+
+    // Call the API to create the user
+    const user = {
+        name: name.value,
+        username: username.value,
+        email: email.value,
+        password: password.value,
+    };
+
+    const url = "localhost:3669/api/register";
+
+
+
+
+
+
 }
 </script>
 
 <template>
     <section class="bg-gray-50 dark:bg-gray-900">
         <div
-            class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+            class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0"
         >
             <div
                 class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
@@ -116,7 +121,7 @@ function handleSubmit(e) {
                     >
                         Create an account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#">
+                    <form class="space-y-4 md:space-y-6" action="#" method="POST" @submit.prevent="handleSubmit">
                         <div>
                             <label for="name">Full Name</label>
                             <input
@@ -126,10 +131,10 @@ function handleSubmit(e) {
                                 id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="John Doe"
-                                required=""
+                                
                             />
                             <p
-                                v-if="validationError.onName"
+                                v-if="validationError.message.name"
                                 class="text-red-500 text-xs italic"
                             >
                                 {{ validationError.message.name }}
@@ -147,11 +152,11 @@ function handleSubmit(e) {
                                 type="text"
                                 name="username"
                                 id="username"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                                 placeholder="johndoe123"
                             />
                             <p
-                                v-if="validationError.onUsername"
+                                v-if="validationError.message.username"
                                 class="text-red-500 text-xs italic"
                             >
                                 {{ validationError.message.username }}
@@ -172,10 +177,10 @@ function handleSubmit(e) {
                                 id="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="name@company.com"
-                                required=""
+                                
                             />
                             <p
-                                v-if="validationError.onEmail"
+                                v-if="validationError.message.email"
                                 class="text-red-500 text-xs italic"
                             >
                                 {{ validationError.message.email }}
@@ -195,10 +200,10 @@ function handleSubmit(e) {
                                 id="password"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                required=""
+                                
                             />
                             <p
-                                v-if="validationError.onPassword"
+                                v-if="validationError.message.password"
                                 class="text-red-500 text-xs italic"
                             >
                                 {{ validationError.message.password }}
@@ -218,10 +223,10 @@ function handleSubmit(e) {
                                 id="confirm-password"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                required=""
+                                
                             />
                             <p
-                                v-if="validationError.onConfirmPassword"
+                                v-if="validationError.message.confirmPassword"
                                 class="text-red-500 text-xs italic"
                             >
                                 {{ validationError.message.confirmPassword }}
@@ -234,7 +239,7 @@ function handleSubmit(e) {
                                     aria-describedby="terms"
                                     type="checkbox"
                                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                    required=""
+                                    
                                 />
                             </div>
                             <div class="ml-3 text-sm">
