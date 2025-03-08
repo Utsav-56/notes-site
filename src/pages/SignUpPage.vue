@@ -58,8 +58,6 @@ function validateForm() {
         validationError.value.containsError = true;
     }
 
-
-
     if (!email.value) {
         validationError.value.message.email = "Email is required";
         validationError.value.containsError = true;
@@ -78,7 +76,8 @@ function validateForm() {
         validationError.value.containsError = true;
     }
     if (password.value !== confirmPassword.value) {
-        validationError.value.message.confirmPassword = "Passwords do not match";
+        validationError.value.message.confirmPassword =
+            "Passwords do not match";
         validationError.value.containsError = true;
     }
 
@@ -97,14 +96,6 @@ function handleSubmit(e) {
         email: email.value,
         password: password.value,
     };
-
-
-
-
-
-
-
-
 }
 </script>
 
@@ -122,7 +113,12 @@ function handleSubmit(e) {
                     >
                         Create an account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#" method="POST" @submit.prevent="handleSubmit">
+                    <form
+                        class="space-y-4 md:space-y-6"
+                        action="#"
+                        method="POST"
+                        @submit.prevent="handleSubmit"
+                    >
                         <div>
                             <label for="name">Full Name</label>
                             <input
@@ -132,7 +128,6 @@ function handleSubmit(e) {
                                 id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="John Doe"
-                                
                             />
                             <p
                                 v-if="validationError.message.name"
@@ -153,7 +148,7 @@ function handleSubmit(e) {
                                 type="text"
                                 name="username"
                                 id="username"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="johndoe123"
                             />
                             <p
@@ -178,7 +173,6 @@ function handleSubmit(e) {
                                 id="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="name@company.com"
-                                
                             />
                             <p
                                 v-if="validationError.message.email"
@@ -201,7 +195,6 @@ function handleSubmit(e) {
                                 id="password"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                
                             />
                             <p
                                 v-if="validationError.message.password"
@@ -224,7 +217,6 @@ function handleSubmit(e) {
                                 id="confirm-password"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                
                             />
                             <p
                                 v-if="validationError.message.confirmPassword"
@@ -240,7 +232,6 @@ function handleSubmit(e) {
                                     aria-describedby="terms"
                                     type="checkbox"
                                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                    
                                 />
                             </div>
                             <div class="ml-3 text-sm">

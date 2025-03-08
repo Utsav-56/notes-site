@@ -8,11 +8,6 @@ const semStore = useSemStore();
 </script>
 
 <template>
-
-
-
-
-
     <SemesterSubjectCard
         v-for="(subjects, semesterNumber) in semStore.semesterData"
         :key="semesterNumber"

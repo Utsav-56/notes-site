@@ -7,15 +7,14 @@ import NoteCard from "@/components/notes/NoteCard.vue";
 <template>
     <NoteCard></NoteCard>
 
+    <!--    <section id="news-page">-->
+    <!--        <div class="mb-8">-->
+    <!--            <h1>News</h1>-->
+    <!--        </div>-->
+    <!--        <SortByOptions />-->
 
-<!--    <section id="news-page">-->
-<!--        <div class="mb-8">-->
-<!--            <h1>News</h1>-->
-<!--        </div>-->
-<!--        <SortByOptions />-->
-
-<!--        <news-bar v-for=" in 90"></news-bar>-->
-<!--    </section>-->
+    <!--        <news-bar v-for=" in 90"></news-bar>-->
+    <!--    </section>-->
 </template>
 
 <style scoped>
