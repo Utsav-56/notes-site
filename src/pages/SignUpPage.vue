@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import myAxios from "@/customAxios.js";
 
 const router = useRouter();
 
@@ -97,7 +98,7 @@ function handleSubmit(e) {
         password: password.value,
     };
 
-    const url = "localhost:3669/api/register";
+
 
 
 
