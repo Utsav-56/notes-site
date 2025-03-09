@@ -71,7 +71,8 @@ function validateForm() {
 function handleSubmit(e) {
     if (!validateForm()) return false;
 
-    myAxios.post(registerUrl, createFormData(formData.value))
+    myAxios
+        .post(registerUrl, createFormData(formData.value))
         .then((res) => {
             console.log(res);
             router.push({ name: "LoginPage" });
@@ -85,18 +86,21 @@ function handleSubmit(e) {
 
             if (response.status === 409) {
                 if (message === "Username and Email already exists") {
-                    validationError.value.message.username = "Username already exists";
-                    validationError.value.message.email = "Email already exists";
+                    validationError.value.message.username =
+                        "Username already exists";
+                    validationError.value.message.email =
+                        "Email already exists";
                 } else if (message === "Username already exists") {
-                    validationError.value.message.username = "Username already exists";
+                    validationError.value.message.username =
+                        "Username already exists";
                 } else if (message === "Email already exists") {
-                    validationError.value.message.email = "Email already exists";
+                    validationError.value.message.email =
+                        "Email already exists";
                 }
                 validationError.value.containsError = true;
             }
         });
 }
-
 </script>
 
 <template>

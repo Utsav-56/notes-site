@@ -1,5 +1,12 @@
 <script setup>
 import NavSidebar from "@/components/sidebar/Nav-Sidebar.vue";
+import { useAuthStore } from "@/stores/authStore.js";
+
+const authStore = useAuthStore();
+
+
+authStore.checkAuth();
+
 </script>
 
 <template>
