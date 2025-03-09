@@ -4,12 +4,16 @@ import { useRouter } from "vue-router";
 import myAxios from "@/customAxios.js";
 import createFormData from "@/useful_functions/createFormData.js";
 
+const registerUrl = import.meta.env.VITE_REGISTER_URL;
 const router = useRouter();
 
-const name = ref("");
-const username = ref("");
-const email = ref("");
-const password = ref("");
+const formData = ref({
+    name: "Utsav Pokharel",
+    username: "Test",
+    email: "test@user.com",
+    password: "test1234",
+});
+
 const confirmPassword = ref("");
 
 const validationError = ref({
@@ -22,6 +26,9 @@ const validationError = ref({
         confirmPassword: "",
     },
 });
+
+const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
+const validatePassword = (password) => true; // You can enable password validation as needed
 
 function clearValidationErrors() {
     validationError.value = {
@@ -36,55 +43,25 @@ function clearValidationErrors() {
     };
 }
 
-function validateEmail(email) {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
-}
-
-function validatePassword(password) {
-
-    //for testinmg
-    return true;
-
-
-
-    const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-    return re.test(password);
-}
-
 function validateForm() {
     clearValidationErrors();
 
-    if (!name.value) {
-        validationError.value.message.name = "Name is required";
-        validationError.value.containsError = true;
-    }
+    Object.entries(formData.value).forEach(([key, value]) => {
+        if (!value) {
+            validationError.value.message[key] =
+                `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+            validationError.value.containsError = true;
+        }
+    });
 
-    if (!username.value) {
-        validationError.value.message.username = "Username is required";
-        validationError.value.containsError = true;
-    }
-
-    if (!email.value) {
-        validationError.value.message.email = "Email is required";
-        validationError.value.containsError = true;
-    }
-    if (!validateEmail(email.value)) {
+    if (!validateEmail(formData.value.email)) {
         validationError.value.message.email = "Invalid email";
         validationError.value.containsError = true;
     }
-    if (!password.value) {
-        validationError.value.message.password = "Password is required";
-        validationError.value.containsError = true;
-    }
-    if (!validatePassword(password.value)) {
+
+    if (!validatePassword(formData.value.password)) {
         validationError.value.message.password =
             "Password must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters";
-        validationError.value.containsError = true;
-    }
-    if (password.value !== confirmPassword.value) {
-        validationError.value.message.confirmPassword =
-            "Passwords do not match";
         validationError.value.containsError = true;
     }
 
@@ -92,38 +69,34 @@ function validateForm() {
 }
 
 function handleSubmit(e) {
-    if (!validateForm()) {
-        return false;
-    }
+    if (!validateForm()) return false;
 
-    const formBody = {
-        name: name.value,
-        username: username.value,
-        email: email.value,
-        password: password.value,
-    }
-
-    const form =  createFormData(formBody)
-
-    myAxios
-        .post("/register.php", form)
+    myAxios.post(registerUrl, createFormData(formData.value))
         .then((res) => {
             console.log(res);
-            // router.push("/login");
+            router.push({ name: "LoginPage" });
         })
         .catch((err) => {
-            console.log(err);
-            // if (err.response.data.message === "Email already exists") {
-            //     validationError.value.message.email = "Email already exists";
-            //     validationError.value.containsError = true;
-            // }
+            const { response } = err;
+            const { message } = response.data;
+
+            console.log(response);
+            console.log(`Message from server: ${message}`);
+
+            if (response.status === 409) {
+                if (message === "Username and Email already exists") {
+                    validationError.value.message.username = "Username already exists";
+                    validationError.value.message.email = "Email already exists";
+                } else if (message === "Username already exists") {
+                    validationError.value.message.username = "Username already exists";
+                } else if (message === "Email already exists") {
+                    validationError.value.message.email = "Email already exists";
+                }
+                validationError.value.containsError = true;
+            }
         });
-
-
-
-
-
 }
+
 </script>
 
 <template>
@@ -146,7 +119,7 @@ function handleSubmit(e) {
                             <label for="name">Full Name</label>
                             <input
                                 type="text"
-                                v-model="name"
+                                v-model="formData.name"
                                 name="name"
                                 id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -164,7 +137,7 @@ function handleSubmit(e) {
                                 Username (Optional)
                             </label>
                             <input
-                                v-model="username"
+                                v-model="formData.username"
                                 type="text"
                                 name="username"
                                 id="username"
@@ -184,7 +157,7 @@ function handleSubmit(e) {
                                 Your email
                             </label>
                             <input
-                                v-model="email"
+                                v-model="formData.email"
                                 type="email"
                                 name="email"
                                 id="email"
@@ -203,7 +176,7 @@ function handleSubmit(e) {
                                 Password
                             </label>
                             <input
-                                v-model="password"
+                                v-model="formData.password"
                                 type="password"
                                 name="password"
                                 id="password"
