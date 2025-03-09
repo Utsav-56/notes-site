@@ -16,7 +16,7 @@ export const useAuthStore = defineStore("auth", {
         // Login User
          login(credentials) {
 
-             myAxios.post(registerUrl, createFormData(credentials))
+             myAxios.post("/user/login", createFormData(credentials))
                  .then((res) => {
                             const data =  res.data;
                             const { message, user } = data;
@@ -46,25 +46,38 @@ export const useAuthStore = defineStore("auth", {
         },
 
         async checkAuth() {
-            try {
-                const response = await axios.get("/api/me"); // Create this endpoint in your backend
-                this.user = response.data;
-                this.isLoggedIn = true;
-            } catch (error) {
-                this.user = null;
-                this.isLoggedIn = false;
-            }
+
+            myAxios.post("/user/verify")
+                .then((res) => {
+                    const data =  res.data;
+                    const { message, validated } = data;
+
+                    this.loggedIn = validated;
+
+
+
+                })
+                .catch((err) => {
+                    const { response } = err;
+                    const { message } = response.data;
+
+                    console.log(response);
+                    console.log(`Message from server: ${message}`);
+
+
+                });
+
         },
 
         // Logout User
-        async logout() {
-            try {
-                await axios.post("/api/logout");
-                this.user = null;
-                this.isLoggedIn = false;
-            } catch (error) {
-                console.error("Logout failed:", error);
-            }
-        },
+        // async logout() {
+        //     try {
+        //         await axios.post("/api/logout");
+        //         this.user = null;
+        //         this.isLoggedIn = false;
+        //     } catch (error) {
+        //         console.error("Logout failed:", error);
+        //     }
+        // },
     },
 });
