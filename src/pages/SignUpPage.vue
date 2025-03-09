@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import myAxios from "@/customAxios.js";
+import createFormData from "@/useful_functions/createFormData.js";
 
 const router = useRouter();
 
@@ -41,6 +42,12 @@ function validateEmail(email) {
 }
 
 function validatePassword(password) {
+
+    //for testinmg
+    return true;
+
+
+
     const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     return re.test(password);
 }
@@ -89,13 +96,33 @@ function handleSubmit(e) {
         return false;
     }
 
-    // Call the API to create the user
-    const user = {
+    const formBody = {
         name: name.value,
         username: username.value,
         email: email.value,
         password: password.value,
-    };
+    }
+
+    const form =  createFormData(formBody)
+
+    myAxios
+        .post("/register.php", form)
+        .then((res) => {
+            console.log(res);
+            // router.push("/login");
+        })
+        .catch((err) => {
+            console.log(err);
+            // if (err.response.data.message === "Email already exists") {
+            //     validationError.value.message.email = "Email already exists";
+            //     validationError.value.containsError = true;
+            // }
+        });
+
+
+
+
+
 }
 </script>
 
